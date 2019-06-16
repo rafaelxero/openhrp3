@@ -48,6 +48,10 @@ Sensor* Sensor::create(int type)
                 sensor = new VisionSensor();
                 break;
 
+    case TACTILE:
+                sensor = new TactileSensor();
+		break;
+
     case PRESSURE:
     case PHOTO_INTERRUPTER:
     case TORQUE:
@@ -184,3 +188,14 @@ VisionSensor::VisionSensor()
     isUpdated = false;
     isEnabled = false;
 } 
+
+TactileSensor::TactileSensor()
+{
+    type = TACTILE;
+    clear();
+}
+
+void TactileSensor::clear()
+{
+    forces.clear();
+}

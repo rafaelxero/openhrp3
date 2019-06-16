@@ -36,6 +36,7 @@ namespace hrp {
             PRESSURE,
             PHOTO_INTERRUPTER,
             VISION,
+	    TACTILE,
             TORQUE,
             RANGE,
             NUM_SENSOR_TYPES
@@ -146,6 +147,20 @@ namespace hrp {
         std::vector<unsigned char> depth;
         double nextUpdateTime;
         bool isUpdated, isEnabled;
+    };
+
+    
+    class HRPMODEL_API TactileSensor : public Sensor
+    {
+      public:
+        static const int TYPE = TACTILE;
+	
+	TactileSensor();
+
+	typedef Eigen::Vector2d Vector2;
+	std::vector< std::pair<Vector2, Vector3> > forces;
+
+	void clear();
     };
 };
 
